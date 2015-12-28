@@ -48,7 +48,7 @@ var Player = function(x,y) {
 Player.prototype.update = function() {
     // When player reaches water, the position is reset
     if (this.y < 0) {
-        player.reset();
+        this.reset();
   }
 };
 
@@ -60,25 +60,27 @@ Player.prototype.reset = function () {
 
 // Handle keyboard input during gameplay
 Player.prototype.handleInput = function(key) {
+    var tile_width = 101;
+    var tile_length = 83;
     switch(key) {
         case 'up':
         if (this.y > 0){
-            this.y -= 83;
+            this.y -= tile_length;
         }
         break;
         case 'down':
         if (this.y < 404) {
-            this.y += 83;
+            this.y += tile_length;
         }
         break;
         case 'left':
         if (this.x > 0) {
-            this.x -= 101;
+            this.x -= tile_width;
         }
         break;
         case 'right':
         if (this.x < 404){
-            this.x += 101;
+            this.x += tile_width;
         }
         break;
     }
