@@ -13,19 +13,21 @@ var Enemy = function(x, y) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
   this.x = this.x + (dt * this.rate);
-  
-  // Reset player when she collides with enemy
-  if (Math.abs(player.y - this.y) < 20) {
-    if (player.x - this.x < 20) {
-      player.reset();
-    }
-  }
-
   // When bug goes off one side, reappear on the other side
   if (this.x > 700){
     this.x = -100;
     this.rate = 100 + Math.floor(Math.random() * 150);
   }
+};
+
+// Reset player when she collides with an enemy
+Enemy.prototype.checkCollision = function() {
+    if (player.x < this.x + 75 &&
+        player.x + 65 > this.x &&
+        player.y < this.y + 50 &&
+        70 + player.y > this.y) {
+        player.reset();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
