@@ -36,7 +36,16 @@ var Player = function(x,y) {
   this.y = y;
 };
 
-Player.prototype.update = function(dt) {
+Player.prototype.update = function() {
+  // When player reaches water, the position is reset
+  if (this.y < 0) {
+    player.reset();
+  }
+};
+
+Player.prototype.reset = function () {
+  this.x = 303;
+  this.y = 404;
 };
 
 // Handle keyboard input during gameplay
