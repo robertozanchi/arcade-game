@@ -95,11 +95,6 @@ Player.prototype.handleInput = function(key) {
     }
 };
 
-// Draw the player on the screen
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
 // Instantiate enemy objects and put them in an array called allEnemies
 var enemy1 = new Enemy(-101, 55, 'images/enemy-bug.png');
 var enemy2 = new Enemy(-101, 140, 'images/enemy-bug.png');
