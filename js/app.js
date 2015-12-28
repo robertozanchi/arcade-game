@@ -1,11 +1,11 @@
-// Enemies our player must avoid
+// Enemies the player must avoid
 var Enemy = function(x, y) {
   // Set the enemy image to bug
   this.sprite = 'images/enemy-bug.png';
   // Set the enemy's postion
   this.x = x;
   this.y = y;
-  // Set the enemy speed speed
+  // Set the enemy's initial speed
   this.rate = 100 + Math.floor(Math.random() * 150);
 };
 
@@ -16,16 +16,17 @@ Enemy.prototype.update = function(dt) {
   // When bug goes off one side, reappear on the other side
   if (this.x > 700){
     this.x = -100;
+    // Assigns a new speed to enemy
     this.rate = 100 + Math.floor(Math.random() * 150);
   }
 };
 
 // Reset player when she collides with an enemy
 Enemy.prototype.checkCollision = function() {
-    if (player.x < this.x + 75 &&
+    if (player.x < this.x + 65 &&
         player.x + 65 > this.x &&
-        player.y < this.y + 50 &&
-        70 + player.y > this.y) {
+        player.y < this.y + 65 &&
+        65 + player.y > this.y) {
         player.reset();
     }
 };
@@ -35,9 +36,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// Player class
 var Player = function(x,y) {
   // Set the player image to boy character
   this.sprite = 'images/char-boy.png';
@@ -53,6 +52,7 @@ Player.prototype.update = function() {
   }
 };
 
+// Resets player's position to initial position
 Player.prototype.reset = function () {
   this.x = 303;
   this.y = 404;
@@ -89,8 +89,7 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
+// Instantiate enemy objects and put them in an array called allEnemies
 var enemy1 = new Enemy(-101, 55);
 var enemy2 = new Enemy(-101, 140);
 var enemy3 = new Enemy(-101, 225);
