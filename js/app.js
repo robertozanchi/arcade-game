@@ -16,6 +16,7 @@ Enemy.prototype.update = function(dt) {
   // When bug goes off one side, reappear on the other side
   if (this.x > 700){
     this.x = -100;
+    this.rate = 100 + Math.floor(Math.random() * 150);
   }
 };
 
